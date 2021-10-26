@@ -31,28 +31,7 @@ namespace Homework
             Console.WriteLine();
         }
 
-        public static bool IsSumEvenDigitsGreater(int num)
-        {
-            int even_sum = 0;
-            int odd_sum = 0;
-            bool result = false;
-            if ((num % 10) % 2 == 0)
-            {
-                even_sum += num % 10;
-                num = (num - (num % 10)) / 10;
-            }
-            else
-            {
-                odd_sum += num % 10;
-                num = (num - (num % 10)) / 10;
-            }
-            if (even_sum > odd_sum)
-            {
-                result =  true;
-            }
-
-            return result;
-        }
+        
 
         public static void Print2DArr(int[,] numbers) //Печать массива в консоль
         {

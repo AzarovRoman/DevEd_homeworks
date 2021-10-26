@@ -28,36 +28,39 @@ namespace Homework
         //Пользователь вводит 2 числа(X и Y). Определить какой четверти принадлежит точка с координатами(X, Y).
         public static string DefineQuarter(int xCord, int yCord)
         {
+            string res = "";
+
             if ((xCord > 0) && (yCord > 0)) 
             {
-                return "I четверть";
+                res = "I четверть";
             }
             else if ((xCord < 0) && (yCord > 0)) 
             {
-                return "II четверть";
+                res = "II четверть";
             }
             else if ((xCord < 0) && (yCord < 0)) 
             {
-                return "III четверть";
+                res = "III четверть";
             }
             else if ((xCord > 0) && (yCord < 0)) 
             {
-                return "VI четверть";
+                res = "IV четверть";
             }
-            else 
+            else if((xCord == 0) && (yCord == 0))
             {
-                return "Начало координат";
+                res = "Начало координат";
             }
+
+            return res;
         }
 
         //Пользователь вводит 3 числа (A, B и С). Выведите их в консоль в порядке возрастания.
-        public static void OutputThreeNumbersAscending(int fNum, int sNum, int tNum)
+        public static int[] OutputThreeNumbersAscending(int fNum, int sNum, int tNum)
         {
             int[] numbers = new int[] { fNum, sNum, tNum };
 
             ArraysHomework.SelectSort(numbers);
-
-            Support.Print1DArr(numbers);
+            return numbers; 
         }
 
         //Пользователь вводит 3 числа (A, B и С).
@@ -90,7 +93,7 @@ namespace Homework
         public static string GetLiteralOfNumber(int num)
         {
             string res;
-            string res2 = " ";
+            string res2 = "";
 
 
             switch (num - (num % 10))

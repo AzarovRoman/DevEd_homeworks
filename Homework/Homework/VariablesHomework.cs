@@ -9,7 +9,7 @@ namespace Homework
     class VariablesHomework
     {
         //Пользователь вводит 2 числа (A и B). Выведите в консоль решение (5A+B^2)/B-A
-        public static int GetCalculationResult(int fNum, int sNum)
+        public static int GetCalculationResult(int fNum, int sNum)//изменил тип данных!
         {
             return (5 * fNum + sNum * sNum) / sNum - fNum;
         }
@@ -36,9 +36,10 @@ namespace Homework
 
         //Пользователь вводит 3 не равных 0 числа (A, B и С).
         //Выведите в консоль решение(значение X) линейного уравнения стандартного вида, где A*X+B=C.
-        public static int GetResultOfEquation(int fNum, int sNum, int tNum)
+        public static double GetResultOfEquation(int fNum, int sNum, int tNum)
         {
-            return (tNum - sNum) / fNum;
+            double result = (tNum - sNum) / fNum;
+            return result;
         }
 
         //Пользователь вводит 4 числа (X1, Y1, X2, Y2), описывающие координаты 2-х точек на координатной плоскости.

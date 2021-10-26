@@ -8,6 +8,30 @@ namespace Homework
 {
     class CyclesHomework
     {
+        //вспомогательная жуть!!!
+        static bool IsSumEvenDigitsGreater(int num)
+        {
+            int even_sum = 0;
+            int odd_sum = 0;
+            bool result = false;
+            if ((num % 10) % 2 == 0)
+            {
+                even_sum += num % 10;
+                num = (num - (num % 10)) / 10;
+            }
+            else
+            {
+                odd_sum += num % 10;
+                num = (num - (num % 10)) / 10;
+            }
+            if (even_sum > odd_sum)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
         //Пользователь вводит 2 числа (A и B). Возвести число A в степень B.
         public static int Exponentiation(int a, int exponent)
         {
@@ -21,19 +45,22 @@ namespace Homework
         }
 
         //Пользователь вводит 1 число(A). Вывести все числа от 1 до 1000, которые делятся на A.
-        public static void DisplaAllThatDevide(int num)
+        public static int[] DisplaAllThatDevide(int num)//В условии просят вывести, но мы вернем :)
         {
-            for (int i = 1; i <= 1000; i++)
+            int[] results = new int[1000/num];
+
+            for (int i = 0; i <= 1000; i += num)
             {
-                if (i % num == 0) 
+                if (i % num == 0 && i != 0) 
                 {
-                    Console.WriteLine(i);
+                    results[(i / num) - 1] = i;
                 }
             }
+            return results;
         }
 
         //Пользователь вводит 1 число (A). Найдите количество положительных целых чисел, квадрат которых меньше A.
-        public static int FindCountOfLessSquare(int num)
+        public static int CountOfLessSquare(int num)
         {
             int count = 0;
             for (int i = 0; i * i < num; i++) 
@@ -45,10 +72,10 @@ namespace Homework
         }
 
         //Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
-        public static int GetGreatestDivisor(int num)
+        public static int GetGreatestDivisor(int num)//УСКОРИТЬ В ДВА РАЗА!
         {
             int res = 0;
-            for (int i = 1; i < num; i++)
+            for (int i = 1; i < num/2 + 1; i++)//возможно я дебил, но я отбросил половину нерабочих значений
             {
                 if (num % i == 0)
                 {
@@ -89,7 +116,6 @@ namespace Homework
             for (int i = 1; i < num - 1; i++)
             {
                 res = fFib + sFib;
-                int tmpFib = fFib;
                 fFib = sFib;
                 sFib = res;
             }
@@ -120,14 +146,12 @@ namespace Homework
             int rightBorder = cube;
             int leftBorder = 0;
 
-            while (true)
+            int x = 0;
+
+            while (x * x * x != cube)
             {
-                int x = ((leftBorder + rightBorder) / 2);
-                if (x * x * x == cube)
-                {
-                    return x;
-                }
-                else if (x * x * x < cube)
+                x = ((leftBorder + rightBorder) / 2);
+                if (x * x * x < cube)
                 {
                     leftBorder = x;
                 }
@@ -136,21 +160,17 @@ namespace Homework
                     rightBorder = x;
                 }
             }
+            return x;
         }
 
         //Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
-        public static int GetCountOfOddDigit(int num)
+        public static int GetCountOfOddDigit(int num)//НЕ ПОНЯЛ ЧТО ЗНАЧИТ "+1"
         {
             int a;
             int res = 0;
 
-            while (true)
+            while (num != 0)
             {
-                if (num == 0) 
-                { 
-                    break;
-                }
-
                 a = num % 10;
                 num = num / 10;
 
@@ -176,22 +196,37 @@ namespace Homework
                 res *= 10;
                 int tmp = num % 10;
                 res += tmp;
-                num = (num - tmp) / 10;
+                num = num / 10;
             }
-            return num;
+            return res;
         }
 
         //Пользователь вводит целое положительное  число (a).
         //Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных.
-        public static void PrintNumbersSumEvenDigitsGreater(int num)
+        public static int[] PrintNumbersSumEvenDigitsGreater(int num)
         {
-            for (int i = 0; i < num; i++)
+            int len = 0;
+            for (int i = 0; i < num; i++)//в цикле узнаем длину массива
             {
-                if (Support.IsSumEvenDigitsGreater(i))
+                if (IsSumEvenDigitsGreater(i))
                 {
-                    Console.WriteLine(i);
+                    len++;
                 }
             }
+
+            int[] results = new int[len];
+            int currentIndex = 0; //индекс, под которым будем записывать подошедшее значение (ничего умнее пока не придумал :( )
+
+            for (int i = 0; i < num; i++)
+            {
+                if (IsSumEvenDigitsGreater(i))
+                {
+                    results[currentIndex] = i;
+                    currentIndex++;
+                }
+            }
+
+            return results;
         }
 
         // //Пользователь вводит 2 числа. Сообщите, есть ли в написании двух чисел одинаковые цифры.

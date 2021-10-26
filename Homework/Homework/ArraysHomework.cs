@@ -26,16 +26,16 @@ namespace Homework
         //Найти максимальный элемент массива
         public static int GetMaxArraysElement(int[] array)
         {
-            int min = array[0];
+            int max = array[0];
 
             for (int i = 1; i < array.Length - 1; i++)
             {
-                if (array[i] > min)
+                if (array[i] > max)
                 {
-                    min = array[i];
+                    max = array[i];
                 }
             }
-            return min;
+            return max;
         }
 
         //Найти индекс минимального элемента массива
@@ -76,8 +76,14 @@ namespace Homework
         public static int GetSumElementWithOddIndex(int[] array)
         {
             int res = 0;
+            int flag = 1;
 
-            for (int i = 1; i < array.Length - 1; i += 2)
+            if (array.Length % 2 == 0)
+            {
+                flag = 0;
+            }
+
+            for (int i = 1; i < array.Length - flag; i += 2) //i был i+=2
             {
                 res += array[i];
             }
@@ -99,16 +105,16 @@ namespace Homework
         //Посчитать количество нечетных элементов массива
         public static int GetSumOddElement(int[] array)
         {
-            int res = 0;
+            int count = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
                 if (Math.Abs(array[i] % 2) == 1)
                 {
-                    res += array[i];
+                    count++;
                 }
             }
-            return res;
+            return count;
         }
 
         //Поменять местами первую и вторую половину массива,
