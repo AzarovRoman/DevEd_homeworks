@@ -83,7 +83,7 @@ namespace Homework
                 flag = 0;
             }
 
-            for (int i = 1; i < array.Length - flag; i += 2) //i был i+=2
+            for (int i = 1; i < array.Length - flag; i += 2)
             {
                 res += array[i];
             }

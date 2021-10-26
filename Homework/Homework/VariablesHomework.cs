@@ -9,9 +9,10 @@ namespace Homework
     class VariablesHomework
     {
         //Пользователь вводит 2 числа (A и B). Выведите в консоль решение (5A+B^2)/B-A
-        public static int GetCalculationResult(int fNum, int sNum)//изменил тип данных!
+        public static double GetCalculationResult(int fNum, int sNum)//изменил тип данных!
         {
-            return (5 * fNum + sNum * sNum) / sNum - fNum;
+            int result = (5 * fNum + sNum * sNum) / sNum - fNum;
+            return result;
         }
 
         //Пользователь вводит 2 строковых значения(A и B). Поменяйте содержимое переменных A и B местами.
