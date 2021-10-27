@@ -9,20 +9,22 @@ namespace Homework
     class BranchingStructuresHomework
     {
         //Пользователь вводит 2 числа (A и B). Если A>B, подсчитать A+B, если A=B, подсчитать A*B, если A<B, подсчитать A-B.
-        public static int GetResultAccordingToCondition(int fNum, int sNum)
+        public static int GetCalc(int fNum, int sNum)
         {
+            int result = 0;
             if (fNum > sNum)
             {
-                return fNum + sNum;
+                result = fNum + sNum;
             }
             else if (fNum == sNum)
             {
-                return fNum * sNum;
+                result = fNum * sNum;
             }
             else
             {
-                return fNum - sNum;
+                result = fNum - sNum;
             }
+            return result;
         }
 
         //Пользователь вводит 2 числа(X и Y). Определить какой четверти принадлежит точка с координатами(X, Y).
@@ -50,12 +52,19 @@ namespace Homework
             {
                 res = "Начало координат";
             }
-
+            else if ((xCord == 0))
+            {
+                res = "Точка лежит на оси Y";
+            }
+            else if ((yCord == 0))
+            {
+                res = "Точка лежит на оси Х";
+            }
             return res;
         }
 
         //Пользователь вводит 3 числа (A, B и С). Выведите их в консоль в порядке возрастания.
-        public static int[] OutputThreeNumbersAscending(int fNum, int sNum, int tNum)
+        public static int[] SortNumbers(int fNum, int sNum, int tNum)
         {
             int[] numbers = new int[] { fNum, sNum, tNum };
 
@@ -64,7 +73,7 @@ namespace Homework
         }
 
         //Пользователь вводит 3 числа (A, B и С).
-        //Выведите в консоль решение(значения X) квадратного уравнения стандартного вида, где AX2+BX+C=0.
+        //Выведите в консоль решение(значения X) квадратного уравнения стандартного вида, где AX^2+BX+C=0.
         public static double[] SolveSquareEquation(double  fNum, double sNum, double tNum)
         {
             if (sNum > 0)
@@ -90,11 +99,10 @@ namespace Homework
         //Пользователь вводит двузначное число.
         //Выведите в консоль прописную запись этого числа.
         //Например при вводе “25” в консоль будет выведено “двадцать пять”.
-        public static string GetLiteralOfNumber(int num)
+        public static string GetLiteral(int num)
         {
             string res;
             string res2 = "";
-
 
             switch (num - (num % 10))
             {
@@ -123,19 +131,18 @@ namespace Homework
             {
                 switch (num % 10)
                 {
-                    case 1: res2 = "один"; break;
-                    case 2: res2 = "два"; break;
-                    case 3: res2 = "три"; break;
-                    case 4: res2 = "четыре"; break;
-                    case 5: res2 = "пять"; break;
-                    case 6: res2 = "шесть"; break;
-                    case 7: res2 = "семь"; break;
-                    case 8: res2 = "восемь"; break;
-                    case 9: res2 = "девять"; break;
+                    case 1: res2 = " один"; break;
+                    case 2: res2 = " два"; break;
+                    case 3: res2 = " три"; break;
+                    case 4: res2 = " четыре"; break;
+                    case 5: res2 = " пять"; break;
+                    case 6: res2 = " шесть"; break;
+                    case 7: res2 = " семь"; break;
+                    case 8: res2 = " восемь"; break;
+                    case 9: res2 = " девять"; break;
                 }
             }
-
-            return $"{res} {res2}";
+            return $"{res}{res2}";
         }
 
     }

@@ -17,7 +17,7 @@ namespace Homework
             if ((num % 10) % 2 == 0)
             {
                 even_sum += num % 10;
-                num = (num - (num % 10)) / 10;
+                num /= 10;
             }
             else
             {
@@ -45,7 +45,7 @@ namespace Homework
         }
 
         //Пользователь вводит 1 число(A). Вывести все числа от 1 до 1000, которые делятся на A.
-        public static int[] DisplaAllThatDevide(int num)//В условии просят вывести, но мы вернем :)
+        public static int[] PrintAllThatDevide(int num)//В условии просят вывести, но мы вернем :)
         {
             int[] results = new int[1000/num];
 
@@ -72,10 +72,10 @@ namespace Homework
         }
 
         //Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
-        public static int GetGreatestDivisor(int num)//УСКОРИТЬ В ДВА РАЗА!
+        public static int GetGreatestDivisor(int num)
         {
             int res = 0;
-            for (int i = 1; i < num/2 + 1; i++)//возможно я дебил, но я отбросил половину нерабочих значений
+            for (int i = 1; i < num/2 + 1; i++)
             {
                 if (num % i == 0)
                 {
@@ -141,7 +141,7 @@ namespace Homework
 
         //Пользователь вводит целое положительное число, которое является кубом целого числа N.
         //Найдите число N методом половинного деления.
-        public static int FindСubeРalfDivision(int cube)
+        public static int FindСubeHalfDivision(int cube)
         {
             int rightBorder = cube;
             int leftBorder = 0;

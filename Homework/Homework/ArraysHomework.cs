@@ -9,7 +9,7 @@ namespace Homework
     class ArraysHomework
     {
         //Найти минимальный элемент массива
-        public static int GetMinArraysElement(int[] array)
+        public static int GetMin(int[] array)
         {
             int min = array[0];
 
@@ -24,7 +24,7 @@ namespace Homework
         }
 
         //Найти максимальный элемент массива
-        public static int GetMaxArraysElement(int[] array)
+        public static int GetMax(int[] array)
         {
             int max = array[0];
 
@@ -39,7 +39,7 @@ namespace Homework
         }
 
         //Найти индекс минимального элемента массива
-        public static int GetIndexOfMinElement(int[] array)
+        public static int GetIndexOfMin(int[] array)
         {
             int min = array[0];
             int minIndex = 0;
@@ -56,34 +56,29 @@ namespace Homework
         }
 
         //Найти индекс максимального элемента массива
-        public static int GetIndexOfManElement(int[] array)
+        public static int GetIndexOfMax(int[] array)
         {
-            int min = array[0];
-            int minIndex = 0;
+            int max = array[0];
+            int maxIndex = 0;
 
             for (int i = 1; i < array.Length - 1; i++)
             {
-                if (array[i] > min)
+                if (array[i] > max)
                 {
-                    min = array[i];
-                    minIndex = i;
+                    max = array[i];
+                    maxIndex = i;
                 }
             }
-            return minIndex;
+            return maxIndex;
         }
 
         //Посчитать сумму элементов массива с нечетными индексами
-        public static int GetSumElementWithOddIndex(int[] array)
+        public static int AddElementWithOddIndex(int[] array)
         {
             int res = 0;
-            int flag = 1;
+            int lenRemainder = array.Length % 2;
 
-            if (array.Length % 2 == 0)
-            {
-                flag = 0;
-            }
-
-            for (int i = 1; i < array.Length - flag; i += 2)
+            for (int i = 1; i < array.Length - lenRemainder; i += 2)
             {
                 res += array[i];
             }
@@ -103,7 +98,7 @@ namespace Homework
         }
 
         //Посчитать количество нечетных элементов массива
-        public static int GetSumOddElement(int[] array)
+        public static int CountOddElement(int[] array)
         {
             int count = 0;
 

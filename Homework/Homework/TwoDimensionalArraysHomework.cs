@@ -9,7 +9,7 @@ namespace Homework
     class TwoDimensionalArraysHomework
     {
         //Найти минимальный элемент массива
-        public static int SearchMin(int[,] array)
+        public static int GethMin(int[,] array)
         {
 
             int min = array[0, 0];
@@ -28,7 +28,7 @@ namespace Homework
         }
 
         //Найти максимальный элемент массива
-        public static int SearchMax(int[,] array)
+        public static int GetMax(int[,] array)
         {
 
             int max = array[0, 0];
@@ -47,7 +47,7 @@ namespace Homework
         }
 
         //Найти индекс минимального элемента массива
-        public static int[] SearchIndexOfMin(int[,] array)
+        public static int[] GetIndexOfMin(int[,] array)
         {
             int min = array[0, 0];
             int[] indexesOfMin = new int[2];
@@ -69,29 +69,29 @@ namespace Homework
         }
 
         //Найти индекс максимального элемента массива
-        public static int[] SearchIndexOfMan(int[,] array)
+        public static int[] GetIndexOfMax(int[,] array)
         {
-            int min = array[0, 0];
-            int[] indexesOfMin = new int[2];
+            int max = array[0, 0];
+            int[] indexesOfMax = new int[2];
 
             for (int i = 1; i < array.GetLength(0); i++)
             {
                 for (int j = 1; j < array.GetLength(1); j++)
                 {
-                    if (array[i, j] > min)
+                    if (array[i, j] > max)
                     {
-                        min = array[i, j];
-                        indexesOfMin[0] = i;
-                        indexesOfMin[1] = j;
+                        max = array[i, j];
+                        indexesOfMax[0] = i;
+                        indexesOfMax[1] = j;
                     }
                 }
             }
 
-            return indexesOfMin;
+            return indexesOfMax;
         }
 
         //Найти количество элементов массива, которые больше всех своих соседей одновременно
-        public static int FindingBiggerNeighbor(int[,] array)
+        public static int CountBiggerNeighbor(int[,] array)
         {
             int count = 0;
 
