@@ -76,14 +76,16 @@ namespace Homework
         //Выведите в консоль решение(значения X) квадратного уравнения стандартного вида, где AX^2+BX+C=0.
         public static double[] SolveSquareEquation(double  fNum, double sNum, double tNum)
         {
-            if (sNum > 0)
+            double D = (sNum * sNum) - 4 * fNum * tNum;
+
+            if (D > 0)
             {
                 double x1 = ((sNum * (-1)) + Math.Sqrt(sNum * sNum - 4 * fNum * tNum)) / 2 * fNum;
                 double x2 = ((sNum * (-1)) - Math.Sqrt(sNum * sNum - 4 * fNum * tNum)) / 2 * fNum;
-                double[] results = new double[] { x1, x2};
+                double[] results = new double[] { x1, x2 };
                 return results;
             }
-            else if (sNum == 0)
+            else if (D == 0)
             {
                 double x1 = ((sNum * (-1))) / 2 * fNum;
                 double[] results = new double[] { x1 };

@@ -49,12 +49,9 @@ namespace Homework
         {
             int[] results = new int[1000/num];
 
-            for (int i = 0; i <= 1000; i += num)
+            for (int i = num; i <= 1000; i += num)
             {
-                if (i % num == 0 && i != 0) 
-                {
-                    results[(i / num) - 1] = i;
-                }
+               results[(i / num) - 1] = i;
             }
             return results;
         }
@@ -107,7 +104,7 @@ namespace Homework
 
         ////Пользователь вводит 1 положительное число (N). Выведите N-ое число ряда фибоначчи.
         //В ряду фибоначчи каждое следующее число является суммой двух предыдущих. Первое и второе считаются равными 1
-        public static int GetFiboNumber(int num)
+        public static int GetFibonacciNumber(int num)
         {
             int fFib = 1;
             int sFib = 1;
