@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    class CyclesHomework
+    public class CyclesHomework
     {
         //вспомогательная жуть!!!
         static bool IsSumEvenDigitsGreater(int num)
@@ -33,20 +33,31 @@ namespace Homework
         }
 
         //Пользователь вводит 2 числа (A и B). Возвести число A в степень B.
-        public static int Exponentiation(int a, int exponent)
+        public static int Exponentiation(int num, int exponent)
         {
+            if(exponent < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             int result = 1;
             for (int i = 0; i < exponent; i++)
             {
-                result *= a;
+                result *= num;
             }
 
             return result;
         }
 
         //Пользователь вводит 1 число(A). Вывести все числа от 1 до 1000, которые делятся на A.
-        public static int[] PrintAllThatDevide(int num)//В условии просят вывести, но мы вернем :)
+        public static int[] GetAllThatDevide(int num)//В условии просят вывести, но мы вернем :)
         {
+
+            if(num <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             int[] results = new int[1000/num];
 
             for (int i = num; i <= 1000; i += num)
@@ -59,6 +70,11 @@ namespace Homework
         //Пользователь вводит 1 число (A). Найдите количество положительных целых чисел, квадрат которых меньше A.
         public static int CountOfLessSquare(int num)
         {
+            if(num <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             int count = 0;
             for (int i = 0; i * i < num; i++) 
             {
@@ -71,6 +87,10 @@ namespace Homework
         //Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A) числа A.
         public static int GetGreatestDivisor(int num)
         {
+            if (num < 2)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             int res = 0;
             for (int i = 1; i < num/2 + 1; i++)
             {
@@ -84,7 +104,7 @@ namespace Homework
 
         //Пользователь вводит 2 числа (A и B). Вывести сумму всех чисел из диапазона от A до B,
         //которые делятся без остатка на 7. (Учтите, что при вводе B может оказаться меньше A).
-        public static int PrintSumOfNumbers(int fNum, int sNum)
+        public static int GetSumOfNumbersThatDivideSeven(int fNum, int sNum)
         {
             int result = 0;
             if (fNum > sNum)
@@ -92,7 +112,7 @@ namespace Homework
                 VariablesHomework.Swap(ref fNum, ref sNum);
             }
 
-            for (int i = fNum; i < sNum; i++)
+            for (int i = fNum; i <= sNum; i++)
             {
                 if (i % 7 == 0)
                 {
@@ -106,6 +126,11 @@ namespace Homework
         //В ряду фибоначчи каждое следующее число является суммой двух предыдущих. Первое и второе считаются равными 1
         public static int GetFibonacciNumber(int num)
         {
+            if (num < 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             int fFib = 1;
             int sFib = 1;
             int res = 1;
@@ -122,6 +147,11 @@ namespace Homework
         //Пользователь вводит 2 числа. Найти их наибольший общий делитель используя алгоритм Евклида.
         public static int GetGreatestCommonFactor(int fNum, int sNum)
         {
+            if (fNum <= 0 || sNum <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             while (fNum != sNum)
             {
                 if (fNum > sNum)
@@ -140,15 +170,16 @@ namespace Homework
         //Найдите число N методом половинного деления.
         public static int FindСubeHalfDivision(int cube)
         {
-            int rightBorder = cube;
+            int positiveCube = Math.Abs(cube);
+            int rightBorder = positiveCube;
             int leftBorder = 0;
 
             int x = 0;
 
-            while (x * x * x != cube)
+            while (x * x * x != positiveCube)
             {
                 x = ((leftBorder + rightBorder) / 2);
-                if (x * x * x < cube)
+                if (x * x * x < positiveCube)
                 {
                     leftBorder = x;
                 }
@@ -157,11 +188,15 @@ namespace Homework
                     rightBorder = x;
                 }
             }
+            if (cube < 0)
+            {
+                return x * (-1);
+            }
             return x;
         }
 
         //Пользователь вводит 1 число. Найти количество нечетных цифр этого числа.
-        public static int GetCountOfOddDigit(int num)//НЕ ПОНЯЛ ЧТО ЗНАЧИТ "+1"
+        public static int GetCountOfOddDigit(int num)
         {
             int a;
             int res = 0;
@@ -202,6 +237,12 @@ namespace Homework
         //Выведите числа в диапазоне от 1 до N, сумма четных цифр которых больше суммы нечетных.
         public static int[] PrintNumbersSumEvenDigitsGreater(int num)
         {
+
+            if(num < 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             int len = 0;
             for (int i = 0; i < num; i++)//в цикле узнаем длину массива
             {
@@ -226,17 +267,20 @@ namespace Homework
             return results;
         }
 
-        // //Пользователь вводит 2 числа. Сообщите, есть ли в написании двух чисел одинаковые цифры.
+        //Пользователь вводит 2 числа. Сообщите, есть ли в написании двух чисел одинаковые цифры.
         //Например, для пары 123 и 3456789, ответом будет являться “ДА”, а, для пары 500 и 99 - “НЕТ”.
         public static bool IsSameNumbersHere(int fNum, int sNum)
         {
+            fNum = Math.Abs(fNum);
+            sNum = Math.Abs(sNum);
+
             bool result = false;
             int tmp = sNum;
 
-            while (fNum != 0)
+            do
             {
                 int a1 = fNum % 10;
-                while (tmp != 0)
+                do
                 {
                     if (tmp % 10 == a1)
                     {
@@ -247,10 +291,10 @@ namespace Homework
                     {
                         tmp = tmp / 10;
                     }
-                }
-                fNum = (fNum - (fNum % 10)) / 10;
+                } while (tmp != 0);
+                    fNum = (fNum - (fNum % 10)) / 10;
                 tmp = sNum / 10;
-            }
+            } while (fNum != 0);
             return result;
         }
     }
