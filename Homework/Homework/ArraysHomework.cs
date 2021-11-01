@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace Homework
 {
-    class ArraysHomework
+    public class ArraysHomework
     {
         //Найти минимальный элемент массива
         public static int GetMin(int[] array)
         {
+
+            if(array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             int min = array[0];
 
-            for (int i = 1; i < array.Length - 1; i++)
+            for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] < min)
                 {
@@ -26,9 +32,14 @@ namespace Homework
         //Найти максимальный элемент массива
         public static int GetMax(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             int max = array[0];
 
-            for (int i = 1; i < array.Length - 1; i++)
+            for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > max)
                 {
@@ -41,10 +52,16 @@ namespace Homework
         //Найти индекс минимального элемента массива
         public static int GetIndexOfMin(int[] array)
         {
+
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             int min = array[0];
             int minIndex = 0;
 
-            for (int i = 1; i < array.Length - 1; i++)
+            for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] < min)
                 {
@@ -58,10 +75,15 @@ namespace Homework
         //Найти индекс максимального элемента массива
         public static int GetIndexOfMax(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             int max = array[0];
             int maxIndex = 0;
 
-            for (int i = 1; i < array.Length - 1; i++)
+            for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > max)
                 {
@@ -73,8 +95,13 @@ namespace Homework
         }
 
         //Посчитать сумму элементов массива с нечетными индексами
-        public static int AddElementWithOddIndex(int[] array)
+        public static int SummElementWithOddIndex(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             int res = 0;
             int lenRemainder = array.Length % 2;
 
@@ -88,6 +115,11 @@ namespace Homework
         //Сделать реверс массива (массив в обратном направлении)
         public static int[] FlipArray(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             for (int i = 0; i < array.Length / 2; i++)
             {
                 int tmp = array[i];
@@ -100,6 +132,11 @@ namespace Homework
         //Посчитать количество нечетных элементов массива
         public static int CountOddElement(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             int count = 0;
 
             for (int i = 0; i < array.Length; i++)
@@ -116,6 +153,11 @@ namespace Homework
         //например, для массива 1 2 3 4, результат 3 4 1 2,  или для 12345 - 45312
         public static int[] FlipHalfOfArry(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             for (int i = 0; i < (array.Length / 2); i++)
             {
                 int tmpElem = array[i];
@@ -129,6 +171,10 @@ namespace Homework
         //select:
         public static int[] SelectSort(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -153,6 +199,11 @@ namespace Homework
         //Bubble
         public static int[] BubbleSort(int[] array)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException();
+            }
+
             for (int i = 0; i < array.Length; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
