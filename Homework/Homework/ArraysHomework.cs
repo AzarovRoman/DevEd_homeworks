@@ -197,7 +197,7 @@ namespace Homework
         //Отсортировать массив по убыванию одним из способов, (отличным от способа в 9-м задании) :
         //пузырьком(Bubble), выбором (Select) или вставками (Insert))
         //Bubble
-        public static int[] BubbleSort(int[] array)
+        public static int[] BubbleSortDescending(int[] array)
         {
             if (array.Length == 0)
             {

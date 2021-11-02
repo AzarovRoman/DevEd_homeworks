@@ -126,6 +126,78 @@ namespace Homework.Test
         }
         #endregion
 
+        #region CountOddElementTests
+        [TestCase(new int[] { 0, 0, 0, 0, 0 }, 0)]
+        [TestCase(new int[] { -1, -10, -5, -22, -11 }, 3)]
+        [TestCase(new int[] { 112, 123, 236, 1312, 41, 1 }, 3)]
+        public void CountOddElementTest(int[] array, int expected)
+        {
+            int actual = ArraysHomework.CountOddElement(array);
 
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase(new int[0])]
+        public void CountOddElementTest_WhenArraysLenghtIsZero_ShouldThrowsArgumentExeptions(int[] array)
+        {
+            Assert.Throws<ArgumentException>(() => ArraysHomework.CountOddElement(array));
+        }
+        #endregion
+
+        #region FlipHalfOfArryTest
+        [TestCase(new int[] { 0, 0, 0, 0, 0 }, new int[] { 0, 0, 0, 0, 0 })]
+        [TestCase(new int[] { -1, -10, -5, -22, -11 }, new int[] { -22, -11, -5, -1, -10 })]
+        [TestCase(new int[] { 112, 123, 236, 1312, 41, 1 }, new int[] { 1312, 41, 1, 112, 123, 236})]
+        public void FlipHalfOfArryTest(int[] array, int[] expected)
+        {
+            int[] actual = ArraysHomework.FlipHalfOfArry(array);
+
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase(new int[0])]
+        public void FlipHalfOfArryTest_WhenArraysLenghtIsZero_ShouldThrowsArgumentExeptions(int[] array)
+        {
+            Assert.Throws<ArgumentException>(() => ArraysHomework.FlipHalfOfArry(array));
+        }
+        #endregion
+
+        #region SelectSortTests
+        [TestCase(new int[] { 0, 0, 0, 0, 0 }, new int[] { 0, 0, 0, 0, 0 })]
+        [TestCase(new int[] { -1, -10, -5, -22, -11 }, new int[] { -22, -11, -10, -5, -1 })]
+        [TestCase(new int[] { 112, 123, 236, 1312, 41, 1 }, new int[] { 1, 41, 112, 123, 236, 1312 })]
+        [TestCase(new int[] { 1 }, new int[] { 1 })]
+        public void SelectSortTest(int[] array, int[] expected)
+        {
+            int[] actual = ArraysHomework.SelectSort(array);
+
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase(new int[0])]
+        public void SelectSortTest_WhenArraysLenghtIsZero_ShouldThrowsArgumentExeptions(int[] array)
+        {
+            Assert.Throws<ArgumentException>(() => ArraysHomework.SelectSort(array));
+        }
+        #endregion
+
+        #region BubbleSortDescendingTests
+        [TestCase(new int[] { 0, 0, 0, 0, 0 }, new int[] { 0, 0, 0, 0, 0 })]
+        [TestCase(new int[] { -1, -10, -5, -22, -11 }, new int[] { -1, -5, -10, -11, -22 })]
+        [TestCase(new int[] { 112, 123, 236, 1312, 41, 1 }, new int[] { 1312, 236, 123, 112, 41, 1 })]
+        [TestCase(new int[] { 1 }, new int[] { 1 })]
+        public void BubbleSortDescendingTest(int[] array, int[] expected)
+        {
+            int[] actual = ArraysHomework.BubbleSortDescending(array);
+
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase(new int[0])]
+        public void BubbleSortDescendingTest_WhenArraysLenghtIsZero_ShouldThrowsArgumentExeptions(int[] array)
+        {
+            Assert.Throws<ArgumentException>(() => ArraysHomework.BubbleSortDescending(array));
+        }
+        #endregion
     }
 }
